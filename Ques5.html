@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      background-color: palevioletred;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .address-container {
+      position: relative;
+      width: 100%;
+      height: 3em;
+      /* Height for 3 lines */
+      overflow: hidden;
+      /* Hide overflowing content */
+    }
+
+    .address-textarea {
+      width: calc(100% - 20px);
+      /* Adjust for scrollbar width */
+      height: 100%;
+      resize: none;
+      /* Disable resizing */
+      overflow-y: scroll;
+      /* Vertical scrollbar */
+    }
+
+    .scroll-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: calc(100% + 1px);
+      /* Height for full height */
+      width: 20px;
+      /* Width for scrollbar */
+      background: #ccc;
+      /* Scrollbar color */
+      cursor: pointer;
+      z-index: 1;
+      /* Ensure it's above the textarea */
+    }
+
+    /* ----- */
+    .address-container2 {
+      position: relative;
+      width: 100%;
+      height: 2em;
+      /* Height for 2 lines */
+      overflow: hidden;
+      /* Hide overflowing content */
+    }
+
+    .address-textarea2 {
+      width: calc(100% - 20px);
+      /* Adjust for buttons width */
+      height: 100%;
+      resize: none;
+      /* Disable resizing */
+      overflow-y: hidden;
+      /* Hide vertical scrollbar */
+      border: none;
+      /* Remove border */
+      outline: none;
+      /* Remove outline */
+    }
+
+    .scroll-button-address {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 20px;
+      /* Width for buttons */
+      background: #ccc;
+      /* Buttons background */
+      cursor: pointer;
+      z-index: 1;
+      /* Ensure buttons are above textarea */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <table>
+
+
+    <tr>
+      <td><label for="name">Name</label></td>
+      <td><input type="text" id="name" name="name"></td>
+    </tr>
+    <tr>
+      <td><label for="employee_code">Employee Code</label></td>
+      <td><input type="text" id="employee_code" name="employee_code" maxlength="4" style="width: 50px"></td>
+    </tr>
+    <tr>
+      <td><label for="department">Department</label></td>
+      <td>
+        <input type="radio" id="admin" name="department" value="admin">
+        <label for="admin">Admin</label><br>
+        <input type="radio" id="hr" name="department" value="hr">
+        <label for="hr">HR</label><br>
+        <input type="radio" id="technical" name="department" value="technical">
+        <label for="technical">TECHNICAL</label><br>
+        <input type="radio" id="accounts" name="department" value="accounts">
+        <label for="accounts">ACCOUNTS</label><br>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="date_of_joining">Date of Joining</label></td>
+      <td>
+        <input type="text" id="day" name="day" placeholder="DD" maxlength="2" style="width: 30px;"> /
+        <input type="text" id="month" name="month" placeholder="MM" maxlength="2" style="width: 30px;"> /
+        <input type="text" id="year" name="year" placeholder="YYYY" maxlength="4" style="width: 50px;">
+      </td>
+    </tr>
+    <tr>
+      <td><label for="address">Address</label></td>
+      <td>
+        <div class="address-container">
+          <textarea id="address" name="address" class="address-textarea" wrap="soft"></textarea>
+          <div class="scroll-button"></div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="trainings">Training programs attended</label></td>
+      <td>
+        <input type="checkbox" id="html_dhtml" name="trainings" value="html_dhtml">
+        <label for="html_dhtml">HTML/DHTML</label><br>
+        <input type="checkbox" id="java" name="trainings" value="java">
+        <label for="java">Java</label><br>
+        <input type="checkbox" id="client_server" name="trainings" value="client_server">
+        <label for="client_server">Client/Server</label><br>
+        <input type="checkbox" id="dot_net" name="trainings" value="dot_net">
+        <label for="dot_net">.NET</label><br>
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="address2">Address 2</label></td>
+      <td>
+        <div class="address-container2">
+          <textarea id="address2" name="address2" class="address-textarea2" wrap="soft"></textarea>
+          <div class="scroll-button-address">
+            <button onclick="scrollUp2()">↑</button>
+            <button onclick="scrollDown2()">↓</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="email">Email</label></td>
+      <td><a href="mailto:saikakde121@gmail.com">saikakde121@gmail.com</a></td>
+    </tr>
+  </table>
+  
+</body>
+<script>
+
+  function scrollUp2() {
+    var textarea = document.getElementById('address2');
+    textarea.scrollTop -= 20; // Adjust scrolling speed as needed
+  }
+
+  function scrollDown2() {
+    var textarea = document.getElementById('address2');
+    textarea.scrollTop += 20; // Adjust scrolling speed as needed
+  }
+</script>
+
+</html>

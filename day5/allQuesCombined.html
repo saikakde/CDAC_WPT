@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Tasks</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .task { margin-bottom: 20px; }
+        label { display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Tasks</h1>
+    
+    <!-- Task 1 -->
+    <div class="task">
+        <h2>1. Find the Largest Number</h2>
+        <label for="num1">Enter first number:</label>
+        <input type="number" id="num1">
+        <label for="num2">Enter second number:</label>
+        <input type="number" id="num2">
+        <label for="num3">Enter third number:</label>
+        <input type="number" id="num3">
+        <button onclick="findLargest()">Find Largest</button>
+        <p id="largestResult"></p>
+    </div>
+
+    <!-- Task 2 -->
+    <div class="task">
+        <h2>2. Print Message Multiple Times</h2>
+        <label for="messageCount">Enter the number of times to print the message:</label>
+        <input type="number" id="messageCount">
+        <label for="message">Enter the message:</label>
+        <input type="text" id="message">
+        <button onclick="printMessage()">Print Message</button>
+        <div id="messageResult"></div>
+    </div>
+
+    <!-- Task 3 -->
+    <div class="task">
+        <h2>3. List Even Numbers</h2>
+        <label for="evenNumber">Enter a number:</label>
+        <input type="number" id="evenNumber">
+        <button onclick="listEvenNumbers()">List Even Numbers</button>
+        <ul id="evenNumberResult"></ul>
+    </div>
+
+    <!-- Task 4 -->
+    <div class="task">
+        <h2>4. Calculator</h2>
+        <label for="calcNum1">Enter first number:</label>
+        <input type="number" id="calcNum1">
+        <label for="calcNum2">Enter second number:</label>
+        <input type="number" id="calcNum2">
+        <label for="operator">Enter operator (+, -, *, /):</label>
+        <input type="text" id="operator">
+        <button onclick="calculate()">Calculate</button>
+        <p id="calcResult"></p>
+    </div>
+
+    <!-- Task 5 -->
+    <div class="task">
+        <h2>5. Multiplication Table</h2>
+        <label for="tableNumber">Enter a number:</label>
+        <input type="number" id="tableNumber">
+        <button onclick="multiplicationTable()">Show Table</button>
+        <ul id="tableResult"></ul>
+    </div>
+
+    <!-- Task 6 -->
+    <div class="task">
+        <h2>6. Sum of Digits</h2>
+        <label for="fiveDigitNumber">Enter a five-digit number:</label>
+        <input type="number" id="fiveDigitNumber">
+        <button onclick="sumOfDigits()">Find Sum</button>
+        <p id="sumResult"></p>
+    </div>
+
+    <!-- Task 7 -->
+    <div class="task">
+        <h2>7. Find Minimum Number</h2>
+        <label for="minNumbers">Enter numbers separated by commas:</label>
+        <input type="text" id="minNumbers">
+        <button onclick="findMin()">Find Minimum</button>
+        <p id="minResult"></p>
+    </div>
+
+    <!-- Task 8 -->
+    <div class="task">
+        <h2>8. Calculate Power</h2>
+        <label for="base">Enter the base (x):</label>
+        <input type="number" id="base">
+        <label for="exponent">Enter the exponent (y):</label>
+        <input type="number" id="exponent">
+        <button onclick="calculatePower()">Calculate Power</button>
+        <p id="powerResult"></p>
+    </div>
+
+    <script>
+        // Task 1: Find Largest Number
+        function findLargest() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const num3 = parseFloat(document.getElementById('num3').value);
+            const largest = Math.max(num1, num2, num3);
+            document.getElementById('largestResult').textContent = `The largest number is ${largest}`;
+        }
+
+        // Task 2: Print Message Multiple Times
+        function printMessage() {
+            const count = parseInt(document.getElementById('messageCount').value);
+            const message = document.getElementById('message').value;
+            const resultDiv = document.getElementById('messageResult');
+            resultDiv.innerHTML = '';
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('p');
+                p.textContent = message;
+                resultDiv.appendChild(p);
+            }
+        }
+
+        // Task 3: List Even Numbers
+        function listEvenNumbers() {
+            const n = parseInt(document.getElementById('evenNumber').value);
+            const resultUl = document.getElementById('evenNumberResult');
+            resultUl.innerHTML = '';
+            let i = 0;
+            while (i <= n) {
+                if (i % 2 === 0) {
+                    const li = document.createElement('li');
+                    li.textContent = i;
+                    resultUl.appendChild(li);
+                }
+                i++;
+            }
+        }
+
+        // Task 4: Calculator
+        function calculate() {
+            const num1 = parseFloat(document.getElementById('calcNum1').value);
+            const num2 = parseFloat(document.getElementById('calcNum2').value);
+            const operator = document.getElementById('operator').value;
+            let result;
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num2 !== 0 ? num1 / num2 : 'Cannot divide by zero';
+                    break;
+                default:
+                    result = 'Invalid operator';
+            }
+            document.getElementById('calcResult').textContent = `Result: ${result}`;
+        }
+
+        // Task 5: Multiplication Table
+        function multiplicationTable() {
+            const num = parseInt(document.getElementById('tableNumber').value);
+            const resultUl = document.getElementById('tableResult');
+            resultUl.innerHTML = '';
+            for (let i = 1; i <= 10; i++) {
+                const li = document.createElement('li');
+                li.textContent = `${num} x ${i} = ${num * i}`;
+                resultUl.appendChild(li);
+            }
+        }
+
+        // Task 6: Sum of Digits
+        function sumOfDigits() {
+            const number = document.getElementById('fiveDigitNumber').value;
+            let sum = 0;
+            for (let digit of number) {
+                sum += parseInt(digit);
+            }
+            document.getElementById('sumResult').textContent = `Sum of digits: ${sum}`;
+        }
+
+        // Task 7: Find Minimum Number
+        function findMin() {
+            const numbers = document.getElementById('minNumbers').value.split(',').map(Number);
+            let min = numbers[0];
+            for (let num of numbers) {
+                if (num < min) {
+                    min = num;
+                }
+            }
+            document.getElementById('minResult').textContent = `Minimum number: ${min}`;
+        }
+
+        // Task 8: Calculate Power
+        function calculatePower() {
+            const base = parseFloat(document.getElementById('base').value);
+            const exponent = parseFloat(document.getElementById('exponent').value);
+            let result = 1;
+            for (let i = 0; i < exponent; i++) {
+                result *= base;
+            }
+            document.getElementById('powerResult').textContent = `Result: ${base}^${exponent} = ${result}`;
+        }
+    </script>
+</body>
+</html>
